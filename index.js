@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 app.get('/', (req, res) => {
     res.json({ 
         status: "online", 
-        mensaje: "¡Proyecto Final de Sistemas Operativos II funcionando!",
+        mensaje: "¡Proyecto Final de Sistemas Operativos II funcionando! PRUE",
         entorno: "Contenedor Docker en Ubuntu"
     });
 });

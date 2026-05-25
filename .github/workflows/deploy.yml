@@ -7,7 +7,6 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
     - name: Clonar el codigo fuente
       uses: actions/checkout@v4
@@ -23,4 +22,14 @@ jobs:
       with:
         context: .
         push: true
-        tags: jmonge13/api-devops:latest
+        tags: jmonge13/api-devops:latest 
+
+  deploy:
+    runs-on: self-hosted
+    needs: build-and-push # Espera que termine de subirse la imagen antes de actuar
+    steps:
+    - name: Descargar la nueva imagen y reiniciar contenedores
+      run: |
+        cd ~/mi-proyecto-devops
+        docker compose pull
+        docker compose up -d

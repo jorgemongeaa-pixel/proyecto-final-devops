@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # Servicio 1: Nuestra API Web
+  web-app:
+    build: .
+    container_name: contenedor-api
+    ports:
+      - "80:3000" # Mapea el puerto 80 de tu Ubuntu al 3000 del contenedor
+    environment:
+      - PORT=3000
+      - DB_HOST=db-postgres
+    depends_on:
+      - db-postgres
+    networks:
+      - red-proyecto
+
+  # Servicio 2: La Base de Datos (Requisito del proyecto)
+  db-postgres:
+    image: postgres:15-alpine
+    container_name: contenedor-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: devops_db
+    ports:
+      - "5432:5432"
+    networks:
+      - red-proyecto
+
+networks:
+  red-proyecto:
+    driver: bridge

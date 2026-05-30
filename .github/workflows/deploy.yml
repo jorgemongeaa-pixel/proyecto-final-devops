@@ -29,8 +29,7 @@ jobs:
     needs: build-and-push # Espera que termine de subirse la imagen antes de actuar
     steps:
     - name: Descargar la nueva imagen y reiniciar contenedores
-      run: |
-        cd ~/mi-proyecto-devops
-        docker compose down
-        docker compose pull
-        docker compose up -d --force-recreate
+        run: |
+          docker compose down
+          docker compose build --no-cache
+          docker compose up -d

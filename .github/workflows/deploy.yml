@@ -26,10 +26,10 @@ jobs:
 
   deploy:
     runs-on: [self-hosted, production]
-    needs: build-and-push # Espera que termine de subirse la imagen antes de actuar
+    needs: build-and-push
     steps:
     - name: Descargar la nueva imagen y reiniciar contenedores
-        run: |
-          docker compose down
-          docker compose build --no-cache
-          docker compose up -d
+      run: |
+        docker compose down
+        docker compose build --no-cache
+        docker compose up -d

@@ -31,5 +31,6 @@ jobs:
     - name: Descargar la nueva imagen y reiniciar contenedores
       run: |
         cd ~/mi-proyecto-devops
+        docker compose down
         docker compose pull
-        docker compose up -d
+        docker compose up -d --force-recreate

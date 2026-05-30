@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Server Control Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/viewport/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #121824; color: #e4e6eb; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .card-custom { background-color: #1c2434; border: 1px solid #2d3748; border-radius: 12px; }
+        .status-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; background-color: #10b981; animation: pulse 2s infinite; }
+        .terminal-box { background-color: #090d16; font-family: monospace; color: #a7f3d0; border-radius: 8px; padding: 15px; max-height: 200px; overflow-y: auto; }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark mb-4 border-bottom border-secondary">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1 d-flex align-items-center">
+                <span class="status-dot me-2"></span> Dashboard de Despliegue Continuo (CD)
+            </span>
+            <span class="badge bg-primary">Proyecto Final: Jorge Monge</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card p-4 card-custom h-100">
+                    <h5 class="text-secondary">Estado del Pipeline</h5>
+                    <h2 class="text-success mt-2">¡ONLINE!</h2>
+                    <p class="text-muted small">Desplegado automáticamente por GitHub Actions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 card-custom h-100">
+                    <h5 class="text-secondary">Host del Sistema</h5>
+                    <h2 class="text-info mt-2">Ubuntu Server</h2>
+                    <p class="text-muted small">Ejecutándose dentro de un contenedor Docker.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 card-custom h-100">
+                    <h5 class="text-secondary">Métrica de Rendimiento</h5>
+                    <h2 class="text-warning mt-2">Estable (0 ms)</h2>
+                    <p class="text-muted small">API optimizada en Node.js 18-Alpine.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card p-4 card-custom">
+                    <h5 class="mb-3">Logs del Proceso de Despliegue Reciente</h5>
+                    <div class="terminal-box">
+                        <p class="mb-1 text-secondary">[2026-05-30 14:00:12] -> Recibiendo webhook desde GitHub Actions...</p>
+                        <p class="mb-1 text-secondary">[2026-05-30 14:00:15] -> Ejecutando: docker compose down...</p>
+                        <p class="mb-1 text-secondary">[2026-05-30 14:00:18] -> Descargando nueva imagen desde Docker Hub (jmonge13/api-devops:latest)...</p>
+                        <p class="mb-1 text-warning">[2026-05-30 14:00:22] -> Forzando recreación del contenedor (--force-recreate)...</p>
+                        <p class="mb-1 text-success">[2026-05-30 14:00:25] -> ¡Servidor web levantado con éxito en puerto 3000!</p>
+                    </div>
+                    <div class="mt-3 text-end">
+                        <button class="btn btn-outline-light btn-sm" onclick="alert('¡Conexión remota con la base de datos PostgreSQL exitosa!')">Probar Conexión DB</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

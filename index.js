@@ -1,15 +1,11 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    res.json({ 
-        status: "online", 
-        mensaje: "¡Proyecto Final de Sistemas Operativos II funcionando!",
-        entorno: "Contenedor Docker en Ubuntu"
-    });
-});
+// Servir la carpeta estática "public" con el diseño HTML
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+    console.log(`Aplicación DevOps corriendo en el puerto ${PORT}`);
 });

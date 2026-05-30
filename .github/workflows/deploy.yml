@@ -25,7 +25,7 @@ jobs:
         tags: jmonge13/api-devops:latest 
 
   deploy:
-    runs-on: self-hosted
+    runs-on: [self-hosted, production]
     needs: build-and-push # Espera que termine de subirse la imagen antes de actuar
     steps:
     - name: Descargar la nueva imagen y reiniciar contenedores
